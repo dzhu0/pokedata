@@ -1,0 +1,88 @@
+<div class="row justify-content-center mb-2">
+  <div class="col-md-6">
+    <h1>About Us</h1>
+    <p>Welcome to PokeData, your ultimate destination for exploring Pokemon data! At PokeData, we provide comprehensive datasets on various aspects of the Pokemon world, including types, abilities, shapes, and individual Pokemon details.</p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h2>PokeData Datasets</h2>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h3>1.	Type Data:</h3>
+    <p>•	<b>URL:</b> https://pokeapi.co/api/v2/type?limit=18</p>
+    <p>•	<b>Data Structure:</b> The type data contains information about various Pokemon types.</p>
+    <p>•	<b>Database Table:</b> types</p>
+    <p>•	<b>Required Columns:</b></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;o	name (string)</p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h3>2.	Ability Data:</h3>
+    <p>•	<b>URL:</b> https://pokeapi.co/api/v2/ability?limit=307</p>
+    <p>•	<b>Data Structure:</b> The ability data contains information about various Pokemon abilities.</p>
+    <p>•	<b>Database Table:</b> abilities</p>
+    <p>•	<b>Required Columns:</b></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;o	name (string)</p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h3>3.	Shape Data:</h3>
+    <p>•	<b>URL:</b> https://pokeapi.co/api/v2/pokemon-shape</p>
+    <p>•	<b>Data Structure:</b> The shape data contains information about different shapes that Pokemon can have.</p>
+    <p>•	<b>Database Table:</b> shapes</p>
+    <p>•	<b>Required Columns:</b></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;o	name (string)</p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h3>4.	Pokemon Data:</h3>
+    <p>•	<b>URL:</b> https://pokeapi.co/api/v2/pokemon/#{pokemon_id}/</p>
+    <p>•	<b>Data Structure:</b> The Pokemon data contains details about individual Pokemon, such as name, weight, height, types, abilities, etc.</p>
+    <p>•	<b>Database Table:</b> pokemons</p>
+    <p>•	<b>Required Columns:</b></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;o	name (string)</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;o	weight (float)</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;o	height (float)</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;o	image (string)</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;o	shape_id (foreign key referencing the shapes table)</p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h3>5.	Pokemon Species Data:</h3>
+    <p>•	<b>URL:</b> https://pokeapi.co/api/v2/pokemon-species/#{pokemon_id}/</p>
+    <p>•	<b>Data Structure:</b> The Pokemon species data provides additional details about a Pokemon species, including the shape.</p>
+    <p>•	<b>Database Table:</b> pokemons</p>
+    <p>•	<b>Additional Columns in pokemons Table:</b></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;o	shape_id (foreign key referencing the shapes table)</p>
+  </div>
+</div>
+
+<div class="row justify-content-center mt-2">
+  <div class="col-md-6">
+    <p>
+      We begin by retrieving data from external APIs for Pokemon types, abilities, and shapes, populating the respective tables with this data.
+      Then, we iterate through Pokemon IDs from 1 to 1025, fetching details about each Pokemon and its species.
+      Finally, for each Pokemon, we create a record in the Pokemons table, associating it with its shape, types, and abilities.
+    </p>
+  </div>
+</div>
+
+<div class="row justify-content-center mt-3">
+  <div class="col-md-6">
+    <h2>Entity Relationship Diagram</h2>
+    <%= image_tag "/assets/PokeData_ERD.png", class: 'img-responsive w-100', alt: "Entity relationship diagram" %>
+  </div>
+</div>
