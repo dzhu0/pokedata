@@ -6,38 +6,53 @@ Pokemon.destroy_all
 Shape.destroy_all
 
 
+puts 'Populating Table Types.'
+
 response = HTTParty.get('https://pokeapi.co/api/v2/type?limit=18')
 data = JSON.parse(response.body)
 
 data['results'].each do |type_data|
+  puts type_data['name']
+
   Type.create(name: type_data['name'])
 end
 
 puts 'Table Types has been populated.'
 
 
+puts 'Populating Table Abilities.'
+
 response = HTTParty.get('https://pokeapi.co/api/v2/ability?limit=307')
 data = JSON.parse(response.body)
 
 data['results'].each do |ability_data|
+  puts ability_data['name']
+
   Ability.create(name: ability_data['name'])
 end
 
 puts 'Table Abilities has been populated.'
 
 
+puts 'Populating Table Shapes.'
+
 response = HTTParty.get('https://pokeapi.co/api/v2/pokemon-shape')
 data = JSON.parse(response.body)
 
 data['results'].each do |shape_data|
+  puts shape_data['name']
+
   Shape.create(name: shape_data['name'])
 end
 
 puts 'Table Shapes has been populated.'
 
 
+puts 'Populating Table Pokemons.'
+
 (1..1025).each do |pokemon_id|
   puts pokemon_id
+
   response = HTTParty.get("https://pokeapi.co/api/v2/pokemon/#{pokemon_id}/")
   pokemon_data = JSON.parse(response.body)
 
