@@ -1,0 +1,10 @@
+<div class="col-md-4">
+  <div class="thumbnail d-flex flex-column align-items-center">
+    <%= image_tag pokemon.image, class: 'img-responsive', alt: pokemon.name %>
+    <div class="caption">
+      <%= link_to pokemon_path(pokemon) do %>
+        <h3><%= pokemon.name.capitalize %></h3>
+      <% end %>
+    </div>
+  </div>
+</div>
