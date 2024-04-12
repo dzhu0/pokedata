@@ -38,20 +38,20 @@
             </li>
           </ul>
 
-          <form class="form-inline ml-auto">
+          <form class="form-inline ml-auto" action="<%= pokemons_path %>">
             <div class="input-group">
-              <input type="text" class="form-control" name="search" placeholder="Search for Pokemon" aria-label="Search" value="<%= params[:search] %>">
+              <input type="text" class="form-control" name="search" placeholder="Search for Pokemon" aria-label="Search" aria-describedby="search-addon" value="<%= params[:search] %>">
 
               <div class="input-group-append">
-                <select class="form-select rounded-0" id="pokemonTypes" name="pokemonTypes">
-                  <option value="" selected>All Types</option>
+                <select class="form-select rounded-0" name="type">
+                  <option value="" <%= "selected" if params[:type].blank? %>>All Types</option>
                   <% Type.all.each do |type| %>
-                    <option value="<%= type.name %>"><%= type.name.capitalize %></option>
+                    <option value="<%= type.name %>" <%= "selected" if params[:type] == type.name %>><%= type.name.capitalize %></option>
                   <% end %>
                 </select>
               </div>
 
-              <button class="btn btn-success" type="button">Search</button>
+              <button class="btn btn-success">Search</button>
             </div>
           </form>
         </div>
