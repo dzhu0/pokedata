@@ -1,24 +1,30 @@
 <h1>Abilities</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Ability</th>
-      <th>Number of Pokemons</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @abilities.each do |ability| %>
+<% if @abilities.any? %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= ability.name.capitalize %></td>
-        <td><%= ability.pokemons.count %></td>
-        <td><%= link_to 'Show Pokemons', ability_path(ability), class: "btn btn-outline-success" %></td>
+        <th>Ability</th>
+        <th>Number of Pokemons</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @abilities.each do |ability| %>
+        <tr>
+          <td><%= ability.name.capitalize %></td>
+          <td><%= ability.pokemons.count %></td>
+          <td><%= link_to 'Show Pokemons', ability_path(ability), class: "btn btn-outline-success" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<div class="row mt-4">
-  <%= paginate @abilities, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm justify-content-center", nav_class: "d-inline-b" %>
-</div>
+  <div class="row mt-4">
+    <%= paginate @abilities, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm justify-content-center", nav_class: "d-inline-b" %>
+  </div>
+<% else %>
+  <div class="alert alert-info text-center" role="alert">
+    No abilities found.
+  </div>
+<% end %>

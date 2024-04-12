@@ -1,11 +1,17 @@
 <h1 class="text-center">Pokemon List</h1>
 
-<div class="row justify-content-center">
-  <% @pokemons.each do |pokemon| %>
-    <%= render partial: 'shared/pokemon_card', locals: { pokemon: pokemon } %>
-  <% end %>
-</div>
+<% if @pokemons.any? %>
+  <div class="row justify-content-center">
+    <% @pokemons.each do |pokemon| %>
+      <%= render partial: 'shared/pokemon_card', locals: { pokemon: pokemon } %>
+    <% end %>
+  </div>
 
-<div class="row mt-4">
-  <%= paginate @pokemons, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm justify-content-center", nav_class: "d-inline-b" %>
-</div>
+  <div class="row mt-4">
+    <%= paginate @pokemons, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm justify-content-center", nav_class: "d-inline-b" %>
+  </div>
+<% else %>
+  <div class="alert alert-info text-center" role="alert">
+    No Pokemon found.
+  </div>
+<% end %>

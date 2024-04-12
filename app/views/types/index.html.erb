@@ -1,24 +1,30 @@
 <h1>Types</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Number of Pokemons</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @types.each do |type| %>
+<% if @types.any? %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= type.name.capitalize %></td>
-        <td><%= type.pokemons.count %></td>
-        <td><%= link_to 'Show Pokemons', type_path(type), class: "btn btn-outline-success" %></td>
+        <th>Type</th>
+        <th>Number of Pokemons</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @types.each do |type| %>
+        <tr>
+          <td><%= type.name.capitalize %></td>
+          <td><%= type.pokemons.count %></td>
+          <td><%= link_to 'Show Pokemons', type_path(type), class: "btn btn-outline-success" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<div class="row mt-4">
-  <%= paginate @types, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm justify-content-center", nav_class: "d-inline-b" %>
-</div>
+  <div class="row mt-4">
+    <%= paginate @types, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm justify-content-center", nav_class: "d-inline-b" %>
+  </div>
+<% else %>
+  <div class="alert alert-info text-center" role="alert">
+    No types found.
+  </div>
+<% end %>
