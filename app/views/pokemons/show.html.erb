@@ -1,0 +1,25 @@
+<div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="thumbnail d-flex align-items-center gap-5">
+        <%= image_tag @pokemon.image, class: 'img-responsive', alt: @pokemon.name %>
+        <div class="caption">
+          <h3><%= @pokemon.name.capitalize %></h3>
+
+          <p>Weight: <%= @pokemon.weight %> hectograms</p>
+          <p>Height: <%= @pokemon.height %> decimetres</p>
+
+          <p>Shape: <%= link_to @pokemon.shape.name, shape_path(@pokemon.shape) %></p>
+
+          <p>Types:
+            <% types = @pokemon.types.map { |type| link_to(type.name, type_path(type)) } %>
+            <%= types.join(', ').html_safe %>
+          </p>
+
+          <p>Abilities:
+            <% abilities = @pokemon.abilities.map { |ability| link_to(ability.name, ability_path(ability)) } %>
+            <%= abilities.join(', ').html_safe %>
+          </p>
+        </div>
+      </div>
+    </div>
+</div>
