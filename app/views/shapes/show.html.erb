@@ -1,0 +1,7 @@
+<h1 class="text-center"><%= @shape.name.capitalize %> Pokemons</h1>
+
+<div class="row justify-content-center">
+  <% @pokemons.each do |pokemon| %>
+    <%= render partial: 'shared/pokemon_card', locals: { pokemon: pokemon } %>
+  <% end %>
+</div>

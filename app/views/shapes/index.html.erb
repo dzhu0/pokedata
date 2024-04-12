@@ -1,0 +1,20 @@
+<h1>Shapes</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Shape</th>
+      <th>Number of Pokemons</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shapes.each do |shape| %>
+      <tr>
+        <td><%= shape.name.capitalize %></td>
+        <td><%= shape.pokemons.count %></td>
+        <td><%= link_to 'Show Pokemons', shape_path(shape), class: "btn btn-outline-success" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
