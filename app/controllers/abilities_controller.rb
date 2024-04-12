@@ -10,6 +10,8 @@ class AbilitiesController < ApplicationController
     def show
         @ability = Ability.find(params[:id])
         @pokemons = @ability.pokemons.page(params[:page]).per(15)
+    rescue ActiveRecord::RecordNotFound
+        render file: "#{Rails.root}/public/404.html", status: :not_found, layout: false
     end
 end
   

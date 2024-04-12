@@ -10,5 +10,7 @@ class TypesController < ApplicationController
     def show
         @type = Type.find(params[:id])
         @pokemons = @type.pokemons.page(params[:page]).per(15)
+    rescue ActiveRecord::RecordNotFound
+        render file: "#{Rails.root}/public/404.html", status: :not_found, layout: false
     end
 end

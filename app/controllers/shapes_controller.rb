@@ -10,5 +10,7 @@ class ShapesController < ApplicationController
     def show
         @shape = Shape.find(params[:id])
         @pokemons = @shape.pokemons.page(params[:page]).per(15)
+    rescue ActiveRecord::RecordNotFound
+        render file: "#{Rails.root}/public/404.html", status: :not_found, layout: false
     end
 end
