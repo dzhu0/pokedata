@@ -5,3 +5,7 @@
     <%= render partial: 'shared/pokemon_card', locals: { pokemon: pokemon } %>
   <% end %>
 </div>
+
+<div class="row mt-4">
+  <%= paginate @pokemons, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm justify-content-center", nav_class: "d-inline-b" %>
+</div>

@@ -1,10 +1,14 @@
 class TypesController < ApplicationController
     def index
-        @types = Type.all.sort_by { |type| type.pokemons.count }.reverse
+        @types = Type.left_joins(:pokemons)
+                     .select('types.*, COUNT(pokemons.id) AS pokemon_count')
+                     .group('types.id')
+                     .order('pokemon_count DESC')
+                     .page(params[:page]).per(15)
     end
 
     def show
         @type = Type.find(params[:id])
-        @pokemons = @type.pokemons
+        @pokemons = @type.pokemons.page(params[:page]).per(15)
     end
 end

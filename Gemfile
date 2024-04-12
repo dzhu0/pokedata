@@ -70,3 +70,7 @@ group :test do
 end
 
 gem "httparty", "~> 0.21.0"
+
+gem "kaminari", "~> 1.2"
+
+gem "bootstrap4-kaminari-views", "~> 1.0"
