@@ -1,0 +1,20 @@
+<h1>Abilities</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Ability</th>
+      <th>Number of Pokemons</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @abilities.each do |ability| %>
+      <tr>
+        <td><%= ability.name.capitalize %></td>
+        <td><%= ability.pokemons.count %></td>
+        <td><%= link_to 'Show Pokemons', ability_path(ability), class: "btn btn-outline-success" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
