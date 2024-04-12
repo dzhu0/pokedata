@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Pokedata</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -11,6 +11,55 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <%= link_to "PokeData", root_path, class: "navbar-brand" %>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+          <ul class="navbar-nav gap-3">
+            <li>
+              <%= link_to "Pokemons", pokemons_path, class: "nav-link" %>
+            </li>
+            <li>
+              <%= link_to "Shapes", shapes_path, class: "nav-link" %>
+            </li>
+            <li>
+              <%= link_to "Types", types_path, class: "nav-link" %>
+            </li>
+            <li>
+              <%= link_to "Abilities", abilities_path, class: "nav-link" %>
+            </li>
+            <li>
+              <%= link_to "About Us", about_index_path, class: "nav-link" %>
+            </li>
+          </ul>
+
+          <form class="form-inline ml-auto">
+            <div class="input-group">
+              <input type="text" class="form-control" name="search" placeholder="Search for Pokemon" aria-label="Search" value="<%= params[:search] %>">
+
+              <div class="input-group-append">
+                <select class="form-select rounded-0" id="pokemonTypes" name="pokemonTypes">
+                  <option value="" selected>All Types</option>
+                  <% Type.all.each do |type| %>
+                    <option value="<%= type.name %>"><%= type.name.capitalize %></option>
+                  <% end %>
+                </select>
+              </div>
+
+              <button class="btn btn-success" type="button">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-5">
+      <%= yield %>
+    </div>
   </body>
 </html>
