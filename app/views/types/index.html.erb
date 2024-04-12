@@ -1,0 +1,20 @@
+<h1>Types</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Number of Pokemons</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @types.each do |type| %>
+      <tr>
+        <td><%= type.name.capitalize %></td>
+        <td><%= type.pokemons.count %></td>
+        <td><%= link_to 'Show Pokemons', type_path(type), class: "btn btn-outline-success" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
